@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doble Turno Gastos - Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+            <div class="header-info">
+                <h1>Doble Turno</h1>
+            </div>
+            <button class="new-expense-button" id="btnNuevoGasto">
+                <i class="fas fa-plus"></i> Nuevo
+            </button>
+        </header> 
+        
+        <div class="filter-section">
+            <div class="filter-controls">
+                <i class="fas fa-filter filter-icon"></i>
+
+                <div class="filter-group">
+                    <label for="filter-mes">Filtrar:</label>
+                    <select id="filter-mes" class="filter-select">
+                        <option value="todo">Todo</option>
+                        <option value="esta-semana">Esta semana</option>
+                        <option value="este-mes">Este mes</option>
+                        <option value="este-anio">Este año</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <section class="metrics-section">
+            <h2 class="section-title">📊 Gastos</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card card-1">
+                    <div class="metric-info">
+                        <p class="metric-label">Gasto Total</p>
+                        <h3 class="metric-value" id="gastoTotalValue">$0.00</h3>
+                    </div>
+                    <i class="fas fa-money-bill-wave card-icon"></i>
+                </div>
+                <div class="metric-card card-2">
+                    <div class="metric-info">
+                        <p class="metric-label">Nº Transacciones</p>
+                        <h3 class="metric-value" id="gastoNumeroValue">0</h3>
+                    </div>
+                    <i class="fas fa-receipt card-icon"></i>
+                </div>
+                <div class="metric-card card-3">
+                    <div class="metric-info">
+                        <p class="metric-label">Gasto Promedio</p>
+                        <h3 class="metric-value" id="gastoPromedioValue">$0.00</h3>
+                    </div>
+                    <i class="fas fa-chart-line card-icon"></i>
+                </div>
+                <div class="metric-card card-4">
+                    <div class="metric-info">
+                        <p class="metric-label">Categorías</p>
+                        <h3 class="metric-value" id="gastoCategoriasValue">0</h3>
+                    </div>
+                    <i class="fas fa-tags card-icon"></i>
+                </div>
+            </div>
+            
+            <h3 class="list-title">Últimos Gastos</h3>
+            <div class="transaction-list" id="gasto-list">
+                </div>
+        </section>
+
+        <section class="metrics-section">
+            <h2 class="section-title">💰 Ingresos</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card card-5">
+                    <div class="metric-info">
+                        <p class="metric-label">Ingreso Total</p>
+                        <h3 class="metric-value" id="ingresoTotalValue">$0.00</h3>
+                    </div>
+                    <i class="fas fa-sack-dollar card-icon"></i>
+                </div>
+                <div class="metric-card card-6">
+                    <div class="metric-info">
+                        <p class="metric-label">Nº Transacciones</p>
+                        <h3 class="metric-value" id="ingresoNumeroValue">0</h3>
+                    </div>
+                    <i class="fas fa-receipt card-icon"></i>
+                </div>
+                <div class="metric-card card-7">
+                    <div class="metric-info">
+                        <p class="metric-label">Ingreso Promedio</p>
+                        <h3 class="metric-value" id="ingresoPromedioValue">$0.00</h3>
+                    </div>
+                    <i class="fas fa-chart-line card-icon"></i>
+                </div>
+                <div class="metric-card card-8">
+                    <div class="metric-info">
+                        <p class="metric-label">Fuentes</p>
+                        <h3 class="metric-value" id="ingresoCategoriasValue">0</h3>
+                    </div>
+                    <i class="fas fa-briefcase card-icon"></i>
+                </div>
+            </div>
+            
+            <h3 class="list-title">Últimos Ingresos</h3>
+            <div class="transaction-list" id="ingreso-list">
+                </div>
+        </section>
+
+    </div>
+
+    <div id="newExpenseModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Transacción</h2>
+                <button class="close-button">&times;</button>
+            </div>
+            <form class="expense-form">
+                
+                <div class="form-group">
+                    <label for="filter-trx">Tipo *</label>
+                    <select id="filter-trx" name="tipo" required>
+                        <option value="gasto">Gasto</option>
+                        <option value="ingreso">Ingreso</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monto">Monto *</label>
+                    <input type="number" id="monto" name="monto" required min="0.01" step="0.01" placeholder="Ej: 50.00">
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoría *</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Seleccione una categoría</option>
+                        <optgroup label="Gastos">
+                            <option value="Comida">Comida</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Entretenimiento">Entretenimiento</option>
+                            <option value="Otros">Otros Gastos</option>
+                        </optgroup>
+                        <optgroup label="Ingresos">
+                            <option value="Salario">Salario</option>
+                            <option value="Inversiones">Inversiones</option>
+                            <option value="Regalo">Regalo</option>
+                            <option value="Venta">Venta</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha *</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="metodoPago">Método de Pago</label>
+                    <select id="metodoPago" name="metodoPago">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="recibo">Recibo (Foto)</label>
+                    <input type="file" id="recibo" name="recibo" accept="image/*" capture="camera">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Agrega detalles..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="action-button cancel-button">Cancelar</button>
+                    <button type="submit" class="action-button save-button">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="main.js"></script> 
+
+   <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => {
+                    console.log('Service Worker registrado con éxito:', reg);
+                })
+                .catch(err => console.log('Registro de Service Worker falló:', err));
+        });
+    }
+    </script>
+</body>
+</html>
