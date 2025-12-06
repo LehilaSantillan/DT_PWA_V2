@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doble Turno Gastos - Dashboard</title>
+    
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -38,86 +39,89 @@
         </div>
 
         <section class="metrics-section">
-            <h2 class="section-title">📊 Gastos</h2>
-            
+            <h2 class="section-title">Resumen Financiero</h2>
             <div class="metrics-grid">
+                
                 <div class="metric-card card-1">
                     <div class="metric-info">
                         <p class="metric-label">Gasto Total</p>
-                        <h3 class="metric-value" id="gastoTotalValue">$0.00</h3>
+                        <span class="metric-value" id="gastoTotalValue">$0.00</span>
                     </div>
-                    <i class="fas fa-money-bill-wave card-icon"></i>
+                    <i class="fas fa-wallet card-icon"></i>
                 </div>
                 <div class="metric-card card-2">
                     <div class="metric-info">
-                        <p class="metric-label">Nº Transacciones</p>
-                        <h3 class="metric-value" id="gastoNumeroValue">0</h3>
+                        <p class="metric-label">Total de Gastos</p>
+                        <span class="metric-value" id="gastoNumeroValue">0</span>
                     </div>
-                    <i class="fas fa-receipt card-icon"></i>
+                    <i class="fas fa-list card-icon"></i>
                 </div>
                 <div class="metric-card card-3">
                     <div class="metric-info">
                         <p class="metric-label">Gasto Promedio</p>
-                        <h3 class="metric-value" id="gastoPromedioValue">$0.00</h3>
+                        <span class="metric-value" id="gastoPromedioValue">$0.00</span>
                     </div>
-                    <i class="fas fa-chart-line card-icon"></i>
+                    <i class="fas fa-percent card-icon"></i>
                 </div>
                 <div class="metric-card card-4">
                     <div class="metric-info">
-                        <p class="metric-label">Categorías</p>
-                        <h3 class="metric-value" id="gastoCategoriasValue">0</h3>
+                        <p class="metric-label">Categorías Únicas</p>
+                        <span class="metric-value" id="gastoCategoriasValue">0</span>
                     </div>
                     <i class="fas fa-tags card-icon"></i>
                 </div>
-            </div>
-            
-            <h3 class="list-title">Últimos Gastos</h3>
-            <div class="transaction-list" id="gasto-list">
-                </div>
-        </section>
 
-        <section class="metrics-section">
-            <h2 class="section-title">💰 Ingresos</h2>
-            
-            <div class="metrics-grid">
                 <div class="metric-card card-5">
                     <div class="metric-info">
                         <p class="metric-label">Ingreso Total</p>
-                        <h3 class="metric-value" id="ingresoTotalValue">$0.00</h3>
+                        <span class="metric-value" id="ingresoTotalValue">$0.00</span>
                     </div>
-                    <i class="fas fa-sack-dollar card-icon"></i>
+                    <i class="fas fa-dollar-sign card-icon"></i>
                 </div>
                 <div class="metric-card card-6">
                     <div class="metric-info">
-                        <p class="metric-label">Nº Transacciones</p>
-                        <h3 class="metric-value" id="ingresoNumeroValue">0</h3>
+                        <p class="metric-label">Total de Ingresos</p>
+                        <span class="metric-value" id="ingresoNumeroValue">0</span>
                     </div>
-                    <i class="fas fa-receipt card-icon"></i>
+                    <i class="fas fa-list-alt card-icon"></i>
                 </div>
                 <div class="metric-card card-7">
                     <div class="metric-info">
                         <p class="metric-label">Ingreso Promedio</p>
-                        <h3 class="metric-value" id="ingresoPromedioValue">$0.00</h3>
+                        <span class="metric-value" id="ingresoPromedioValue">$0.00</span>
                     </div>
                     <i class="fas fa-chart-line card-icon"></i>
                 </div>
                 <div class="metric-card card-8">
                     <div class="metric-info">
-                        <p class="metric-label">Fuentes</p>
-                        <h3 class="metric-value" id="ingresoCategoriasValue">0</h3>
+                        <p class="metric-label">Fuentes de Ingreso</p>
+                        <span class="metric-value" id="ingresoCategoriasValue">0</span>
                     </div>
-                    <i class="fas fa-briefcase card-icon"></i>
+                    <i class="fas fa-boxes-stacked card-icon"></i>
                 </div>
+                
             </div>
-            
-            <h3 class="list-title">Últimos Ingresos</h3>
-            <div class="transaction-list" id="ingreso-list">
-                </div>
         </section>
 
-    </div>
+        <section class="transaction-lists">
+            
+            <div class="gasto-section">
+                <h2 class="list-title">Últimos Gastos</h2>
+                <div class="transaction-list" id="gasto-list">
+                    </div>
+            </div>
 
-    <div id="newExpenseModal" class="modal-overlay">
+            <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #ccc;">
+
+            <div class="ingreso-section">
+                <h2 class="list-title">Últimos Ingresos</h2>
+                <div class="transaction-list" id="ingreso-list">
+                    </div>
+            </div>
+            
+        </section>
+
+    </div> <div id="newExpenseModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Nueva Transacción</h2>
@@ -126,63 +130,63 @@
             <form class="expense-form">
                 
                 <div class="form-group">
-                    <label for="filter-trx">Tipo *</label>
-                    <select id="filter-trx" name="tipo" required>
+                    <label for="tipo">Tipo de Transacción</label>
+                    <select id="tipo" name="tipo" required>
                         <option value="gasto">Gasto</option>
                         <option value="ingreso">Ingreso</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="monto">Monto *</label>
-                    <input type="number" id="monto" name="monto" required min="0.01" step="0.01" placeholder="Ej: 50.00">
+                    <label for="monto">Monto ($)</label>
+                    <input type="number" id="monto" name="monto" min="0.01" step="0.01" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="categoria">Categoría *</label>
+                    <label for="categoria">Categoría / Fuente</label>
                     <select id="categoria" name="categoria" required>
-                        <option value="">Seleccione una categoría</option>
-                        <optgroup label="Gastos">
-                            <option value="Comida">Comida</option>
-                            <option value="Transporte">Transporte</option>
-                            <option value="Servicios">Servicios</option>
-                            <option value="Entretenimiento">Entretenimiento</option>
-                            <option value="Otros">Otros Gastos</option>
+                        <optgroup label="Gastos Comunes">
+                            <option value="alimentos">Alimentos</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="servicios">Servicios (Luz, Agua, Internet)</option>
+                            <option value="ocio">Ocio y Entretenimiento</option>
+                            <option value="ropa">Ropa y Vestimenta</option>
                         </optgroup>
-                        <optgroup label="Ingresos">
-                            <option value="Salario">Salario</option>
-                            <option value="Inversiones">Inversiones</option>
-                            <option value="Regalo">Regalo</option>
-                            <option value="Venta">Venta</option>
+                        <optgroup label="Fuentes de Ingreso">
+                            <option value="salario">Salario</option>
+                            <option value="venta">Venta / Trabajo Extra</option>
+                            <option value="regalo">Regalo / Donación</option>
+                            <option value="inversion">Inversión / Dividendo</option>
                         </optgroup>
+                        <option value="otro">Otro</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="fecha">Fecha *</label>
+                    <label for="fecha">Fecha</label>
                     <input type="date" id="fecha" name="fecha" required>
                 </div>
-
+                
                 <div class="form-group">
                     <label for="metodoPago">Método de Pago</label>
                     <select id="metodoPago" name="metodoPago">
                         <option value="efectivo">Efectivo</option>
-                        <option value="tarjeta">Tarjeta</option>
+                        <option value="debito">Tarjeta de Débito</option>
+                        <option value="credito">Tarjeta de Crédito</option>
                         <option value="transferencia">Transferencia</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="recibo">Recibo (Foto)</label>
-                    <input type="file" id="recibo" name="recibo" accept="image/*" capture="camera">
+                    <label for="descripcion">Descripción (opcional)</label>
+                    <textarea id="descripcion" name="descripcion" rows="2"></textarea>
                 </div>
-
-
+                
                 <div class="form-group">
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Agrega detalles..."></textarea>
+                    <label for="recibo">Adjuntar Recibo (opcional)</label>
+                    <input type="file" id="recibo" name="recibo" accept="image/*">
                 </div>
-
+                
                 <div class="form-actions">
                     <button type="button" class="action-button cancel-button">Cancelar</button>
                     <button type="submit" class="action-button save-button">Guardar</button>
@@ -191,19 +195,68 @@
         </div>
     </div>
 
+
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-content details-modal-content">
+            <div class="modal-header">
+                <h3 id="details-title">Detalles de Transacción</h3>
+                <button class="close-button" id="closeDetailsModal">&times;</button>
+            </div>
+            
+            <div class="modal-body details-grid">
+                
+                <div class="detail-item type-item">
+                    <p><strong>Tipo:</strong></p>
+                    <span id="detail-tipo"></span>
+                </div>
+                <div class="detail-item amount-item">
+                    <p><strong>Monto:</strong></p>
+                    <span id="detail-monto"></span>
+                </div>
+
+                <div class="detail-item">
+                    <p><strong>Categoría:</strong></p>
+                    <span id="detail-categoria"></span>
+                </div>
+                <div class="detail-item">
+                    <p><strong>Fecha:</strong></p>
+                    <span id="detail-fecha"></span>
+                </div>
+
+                <div class="detail-item full-width">
+                    <p><strong>Método de Pago:</strong></p>
+                    <span id="detail-metodoPago"></span>
+                </div>
+
+                <div class="detail-item description-item full-width">
+                    <p><strong>Descripción:</strong></p>
+                    <span id="detail-descripcion"></span>
+                </div>
+                
+                <div class="detail-item receipt-section full-width">
+                    <h4>Recibo/Comprobante:</h4>
+                    <img id="detail-recibo" class="recibo-img" src="" alt="Recibo de la Transacción">
+                    <p id="no-recibo-msg" style="display: none;">No se adjuntó recibo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="db.js"></script>
     <script src="main.js"></script> 
 
-   <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => {
-                    console.log('Service Worker registrado con éxito:', reg);
-                })
-                .catch(err => console.log('Registro de Service Worker falló:', err));
-        });
-    }
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => {
+                        console.log('Service Worker registrado con éxito:', reg);
+                    })
+                    .catch(err => console.log('Registro de Service Worker falló:', err));
+            });
+        }
     </script>
+
 </body>
 </html>

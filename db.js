@@ -69,4 +69,28 @@ window.obtenerTodasLasTransacciones = function() {
     });
 }
 
+// -----------------------------------------------------
+// FUNCIÓN DE ELIMINACIÓN
+// -----------------------------------------------------
+window.eliminarTransaccion = function(id) {
+    // Asegúrate de que el ID es un número entero
+    const idAEliminar = parseInt(id, 10); 
+    
+    return openDB().then(db => {
+        const transaction = db.transaction('transacciones', 'readwrite');
+        const store = transaction.objectStore('transacciones');
+        
+        return new Promise((resolve, reject) => {
+            // Utilizamos el método delete() para eliminar por keyPath (id)
+            const request = store.delete(idAEliminar); 
+            
+            request.onsuccess = () => resolve('Transacción eliminada con ID: ' + idAEliminar);
+            request.onerror = (e) => reject(e.target.error);
+            
+            transaction.oncomplete = () => console.log("Transacción de eliminación completada.");
+            transaction.onerror = (e) => reject(e.target.error);
+        });
+    });
+}
+
 openDB();
