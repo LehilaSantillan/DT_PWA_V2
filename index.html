@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css"> 
 </head>
+
 <body>
     <div class="login-container">
-        <header class="header">
-            <div class="logo-container">
-                <img src="/images/ut_logo1.png" alt="Logo Universidad Tecnológica de Aguascalientes" class="logo">
-                <span class="logo-text">UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES</span>
+       <header class="header">
+            <div class="logo-and-title"> 
+                <img src="images/ut_logo1.png" alt="Logo Universidad Tecnológica de Aguascalientes" class="logo">
+                <p><span class="logo-text">Universidad Tecnológica de Aguascalientes</span></p>
             </div>
-            <h1>Doble Turno Gastos</h1>
+            <p><h1>Doble Turno Gastos</h1></p>
         </header>
 
         <form class="login-form">
@@ -24,23 +25,26 @@
             </div>
 
             <div class="input-group">
-                <input type="text" id="usuario" name="usuario" placeholder="Usuario">
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
             </div>
 
             <div class="input-group">
-                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
             </div>
 
-            <button type="button" class="login-button" id="loginRedirect">Log In</button>
-            <script>
-                document.getElementById('loginRedirect').onclick = function() {
-                // Redirige al hacer clic en el botón
-                window.location.href = "page1.html";
-                };
-            </script>
-
+            <button type="button" class="login-button" id="loginRedirect">
+                Log In
+            </button>
+            
             <p class="error-message">usuario/contraseña</p>
         </form>
     </div>
+    
+    <script>
+        document.getElementById('loginRedirect').onclick = function() {
+        // Redirige al hacer clic en el botón
+        window.location.href = "page1.html";
+        };
+    </script>
 </body>
 </html>

@@ -1,4 +1,136 @@
 /* =============================== */
+/* 11. Estilos de la Página de Login */
+/* =============================== */
+
+/* Estilo para centrar todo el contenido en la pantalla */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--background-color); /* Usar el fondo general */
+    text-align: center;
+}
+
+/* Estilos de la tarjeta de login */
+.login-form {
+    background-color: var(--card-background);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 400px; /* Limita el ancho del formulario */
+    margin-top: 20px;
+}
+
+/* Estilo del encabezado/logo */
+/* Estilo del encabezado/logo (AJUSTADO) */
+.header {
+    margin-bottom: 30px;
+    /* Centra el texto de la universidad y el nuevo contenedor */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* Nuevo contenedor para alinear logo e h1 en la misma línea */
+.logo-and-title {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el logo y el título */
+    margin-bottom: 5px; /* Espacio antes del texto de la universidad */
+}
+
+/* Estilo para el logo (PEQUEÑO) */
+.header .logo {
+    display: block;
+    width: 150px; /* Tamaño más pequeño, similar al ejemplo */
+    height: auto;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin: 0; /* Asegura que no haya margen superior o inferior */
+}
+
+/* El texto de la universidad permanece centrado debajo del título */
+.logo-text {
+    font-size: 0.9em;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Eliminar la regla de logo-container que ya no es necesaria */
+.logo-container {
+    /* Puedes borrar o comentar esta regla si ya no la usas */
+    display: none; 
+}
+
+/* Icono grande de usuario (placeholder) */
+.icon-placeholder {
+    font-size: 4em;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+}
+
+/* Agrupación de inputs */
+.input-group {
+    margin-bottom: 20px;
+    position: relative; /* Para posibles iconos dentro del input */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-form input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(163, 83, 255, 0.2);
+    outline: none;
+}
+
+/* Botón de Login */
+.login-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #6a00d0; /* Un tono un poco más oscuro */
+    transform: translateY(-1px);
+}
+
+/* Mensaje de error/ayuda */
+.error-message {
+    color: var(--color-gasto); /* Usar el rojo para un mensaje de error */
+    font-size: 0.9em;
+    margin-top: 15px;
+    text-align: center;
+    font-style: italic;
+    /* Estilo del placeholder de usuario/contraseña que tenías */
+    /* Lo mantendremos visible como un mensaje informativo */
+    opacity: 0.7; 
+}
+
+/* =============================== */
 /* 1. Estilos Globales y Reset */
 /* =============================== */
 :root {
